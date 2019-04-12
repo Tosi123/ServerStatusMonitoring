@@ -1,0 +1,5 @@
+part:/ status:0
+part:/app status:0
+part:/boot status:0
+part:/dev/shm status:0
+part:/svc status:0
