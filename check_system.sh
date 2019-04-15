@@ -217,7 +217,7 @@ Volume() {
             if [[ "${part}" == "${DISK_PART}" ]]; then
                 if [[ ${per} -ge ${DISK_PART_LIMIT} ]]; then
                     a=1
-                    RESULT="${SERVER_IP}_${HOSTNAME}_${DATE}_inode_${KKK}_${ALARM_ADD_MSG}"
+                    RESULT="${SERVER_IP}_${HOSTNAME}_${DATE}_inode_${KKK}${ALARM_ADD_MSG}"
                     echo ${RESULT} >> ${ALARM_PATH}
                     break
                 elif [[ ${per} -ge ${DISK_PART_LIMIT_FIRST} ]]; then
@@ -340,7 +340,7 @@ START_LIST[5]="DF" #Disk Volume Flood
 
 if [[ ${EXP_LSTR} -gt 1 ]]; then
     for (( i = 1; i <= ${EXP_LCNT} + 1; i ++ )); do
-        EXP_LIST[${i}] = `cat ${THRESHOLD_PATH} | grep EXCEPT_LIST | tr -d ' ' | awk -F: '{print $2}' | awk -F, "{print $"${i}"}"`
+        EXP_LIST[${i}]=`cat ${THRESHOLD_PATH} | grep EXCEPT_LIST | tr -d ' ' | awk -F: '{print $2}' | awk -F, "{print $"${i}"}"`
     done
     for (( i = 0; i < ${#START_LIST[@]}; i ++ )); do
         for (( k = 1; k <= ${#EXP_LIST[@]}; k ++ )); do
